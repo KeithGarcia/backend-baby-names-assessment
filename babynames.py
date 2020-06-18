@@ -50,9 +50,10 @@ def extract_names(filename):
     matched_years = re.search(r'Popularity in (\d{4})', contents)
     names.append(matched_years.group(1))
 
-    ranked_baby_names = re.findall(
-        r'<td>(\d+)</td><td>(\w+)</td><td>(/w+)</td>', contents)
     names_dict = {}
+
+    ranked_baby_names = re.findall(
+        r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', contents)
 
     for ranked_names in ranked_baby_names:
         if ranked_names[1] not in names_dict:
@@ -60,9 +61,8 @@ def extract_names(filename):
         if ranked_names[2] not in names_dict:
             names_dict[ranked_names[2]] = ranked_names[0]
 
-    dict_keys = sorted(names_dict.keys())
-    for name in dict_keys:
-        names.append(name + ' ' + dict_keys[name])
+    for name in sorted(names_dict.keys()):
+        names.append(name + ' ' + names_dict[name])
     return names
 
 
