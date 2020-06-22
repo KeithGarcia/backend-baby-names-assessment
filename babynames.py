@@ -104,7 +104,7 @@ def main(args):
         if create_summary:
             with open(filename + '.summary', 'w') as file1:
                 file1.write(structured_list)
-        # print(structured_list)
+        print(structured_list)
 
 
 if __name__ == '__main__':
